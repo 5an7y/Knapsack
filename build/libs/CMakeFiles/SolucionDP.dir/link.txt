@@ -1,0 +1,2 @@
+C:\msys64\mingw64\bin\ar.exe qc libSolucionDP.a CMakeFiles/SolucionDP.dir/SolucionDP/SolucionDP.cpp.obj
+C:\msys64\mingw64\bin\ranlib.exe libSolucionDP.a

@@ -1,0 +1,171 @@
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/ProgramData/chocolatey/bin/make.exe -f Makefile cmTC_27347/fast && C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe  -f CMakeFiles/cmTC_27347.dir/build.make CMakeFiles/cmTC_27347.dir/build
+make[1]: Entering directory 'C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_27347.dir/CMakeCCompilerABI.c.obj
+C:/msys64/mingw64/bin/x86_64-w64-mingw32-gcc.exe   -v -o CMakeFiles/cmTC_27347.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeCCompilerABI.c"
+Using built-in specs.
+COLLECT_GCC=c:\msys64\mingw64\bin\x86_64-w64-mingw32-gcc.exe
+Target: x86_64-w64-mingw32
+Configured with: ../gcc-11.2.0/configure --prefix=/mingw64 --with-local-prefix=/mingw64/local --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-native-system-header-dir=/mingw64/x86_64-w64-mingw32/include --libexecdir=/mingw64/lib --enable-bootstrap --enable-checking=release --with-arch=x86-64 --with-tune=generic --enable-languages=c,lto,c++,fortran,ada,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-lto --enable-libgomp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/mingw64 --with-mpfr=/mingw64 --with-mpc=/mingw64 --with-isl=/mingw64 --with-pkgversion='Rev1, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --with-boot-ldflags='-pipe -Wl,--dynamicbase,--high-entropy-va,--nxcompat,--default-image-base-high -Wl,--disable-dynamicbase -static-libstdc++ -static-libgcc' 'LDFLAGS_FOR_TARGET=-pipe -Wl,--dynamicbase,--high-entropy-va,--nxcompat,--default-image-base-high' --enable-linker-plugin-flags='LDFLAGS=-static-libstdc++\ -static-libgcc\ -pipe\ -Wl,--dynamicbase,--high-entropy-va,--nxcompat,--default-image-base-high\ -Wl,--stack,12582912'
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.2.0 (Rev1, Built by MSYS2 project) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_27347.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_27347.dir/'
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/cc1.exe -quiet -v -iprefix c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT Files/CMake/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_27347.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\Users\joses\AppData\Local\Temp\ccYbjoyL.s
+GNU C17 (Rev1, Built by MSYS2 project) version 11.2.0 (x86_64-w64-mingw32)
+	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "c:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include"
+ignoring nonexistent directory "D:/a/_temp/msys64/mingw64/include"
+ignoring nonexistent directory "/mingw64/include"
+ignoring duplicate directory "c:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"
+ignoring duplicate directory "c:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"
+ignoring nonexistent directory "D:/a/_temp/msys64/mingw64/x86_64-w64-mingw32/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include
+End of search list.
+cc1.exe: fatal error: Files/CMake/share/cmake-3.22/Modules/CMakeCCompilerABI.c: No such file or directory
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_27347.dir/build.make:78: CMakeFiles/cmTC_27347.dir/CMakeCCompilerABI.c.obj] Error 1
+make[1]: Leaving directory 'C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_27347/fast] Error 2
+
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/ProgramData/chocolatey/bin/make.exe -f Makefile cmTC_23adf/fast && C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe  -f CMakeFiles/cmTC_23adf.dir/build.make CMakeFiles/cmTC_23adf.dir/build
+make[1]: Entering directory 'C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_23adf.dir/testCCompiler.c.obj
+C:/msys64/mingw64/bin/x86_64-w64-mingw32-gcc.exe    -o CMakeFiles/cmTC_23adf.dir/testCCompiler.c.obj -c "C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp/testCCompiler.c"
+cc1.exe: fatal error: Estocastica/Proyecto/build/CMakeFiles/CMakeTmp/testCCompiler.c: No such file or directory
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_23adf.dir/build.make:78: CMakeFiles/cmTC_23adf.dir/testCCompiler.c.obj] Error 1
+make[1]: Leaving directory 'C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_23adf/fast] Error 2
+
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/ProgramData/chocolatey/bin/make.exe -f Makefile cmTC_20435/fast && C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe  -f CMakeFiles/cmTC_20435.dir/build.make CMakeFiles/cmTC_20435.dir/build
+make[1]: Entering directory 'C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_20435.dir/CMakeCCompilerABI.c.obj
+C:/msys64/mingw64/bin/x86_64-w64-mingw32-gcc.exe   -v -o CMakeFiles/cmTC_20435.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeCCompilerABI.c"
+Using built-in specs.
+COLLECT_GCC=c:\msys64\mingw64\bin\x86_64-w64-mingw32-gcc.exe
+Target: x86_64-w64-mingw32
+Configured with: ../gcc-11.2.0/configure --prefix=/mingw64 --with-local-prefix=/mingw64/local --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-native-system-header-dir=/mingw64/x86_64-w64-mingw32/include --libexecdir=/mingw64/lib --enable-bootstrap --enable-checking=release --with-arch=x86-64 --with-tune=generic --enable-languages=c,lto,c++,fortran,ada,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-lto --enable-libgomp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/mingw64 --with-mpfr=/mingw64 --with-mpc=/mingw64 --with-isl=/mingw64 --with-pkgversion='Rev1, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --with-boot-ldflags='-pipe -Wl,--dynamicbase,--high-entropy-va,--nxcompat,--default-image-base-high -Wl,--disable-dynamicbase -static-libstdc++ -static-libgcc' 'LDFLAGS_FOR_TARGET=-pipe -Wl,--dynamicbase,--high-entropy-va,--nxcompat,--default-image-base-high' --enable-linker-plugin-flags='LDFLAGS=-static-libstdc++\ -static-libgcc\ -pipe\ -Wl,--dynamicbase,--high-entropy-va,--nxcompat,--default-image-base-high\ -Wl,--stack,12582912'
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.2.0 (Rev1, Built by MSYS2 project) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_20435.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_20435.dir/'
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/cc1.exe -quiet -v -iprefix c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT Files/CMake/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_20435.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\Users\joses\AppData\Local\Temp\ccG2nWEv.s
+GNU C17 (Rev1, Built by MSYS2 project) version 11.2.0 (x86_64-w64-mingw32)
+	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "c:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include"
+ignoring nonexistent directory "D:/a/_temp/msys64/mingw64/include"
+ignoring nonexistent directory "/mingw64/include"
+ignoring duplicate directory "c:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"
+ignoring duplicate directory "c:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"
+ignoring nonexistent directory "D:/a/_temp/msys64/mingw64/x86_64-w64-mingw32/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include
+End of search list.
+cc1.exe: fatal error: Files/CMake/share/cmake-3.22/Modules/CMakeCCompilerABI.c: No such file or directory
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_20435.dir/build.make:78: CMakeFiles/cmTC_20435.dir/CMakeCCompilerABI.c.obj] Error 1
+make[1]: Leaving directory 'C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_20435/fast] Error 2
+
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/ProgramData/chocolatey/bin/make.exe -f Makefile cmTC_733e7/fast && C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe  -f CMakeFiles/cmTC_733e7.dir/build.make CMakeFiles/cmTC_733e7.dir/build
+make[1]: Entering directory 'C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_733e7.dir/testCCompiler.c.obj
+C:/msys64/mingw64/bin/x86_64-w64-mingw32-gcc.exe    -o CMakeFiles/cmTC_733e7.dir/testCCompiler.c.obj -c "C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp/testCCompiler.c"
+cc1.exe: fatal error: Estocastica/Proyecto/build/CMakeFiles/CMakeTmp/testCCompiler.c: No such file or directory
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_733e7.dir/build.make:78: CMakeFiles/cmTC_733e7.dir/testCCompiler.c.obj] Error 1
+make[1]: Leaving directory 'C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_733e7/fast] Error 2
+
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/ProgramData/chocolatey/bin/make.exe -f Makefile cmTC_4d077/fast && C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe  -f CMakeFiles/cmTC_4d077.dir/build.make CMakeFiles/cmTC_4d077.dir/build
+make[1]: Entering directory 'C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4d077.dir/CMakeCCompilerABI.c.obj
+C:/msys64/mingw64/bin/x86_64-w64-mingw32-gcc.exe   -v -o CMakeFiles/cmTC_4d077.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeCCompilerABI.c"
+Using built-in specs.
+COLLECT_GCC=c:\msys64\mingw64\bin\x86_64-w64-mingw32-gcc.exe
+Target: x86_64-w64-mingw32
+Configured with: ../gcc-11.2.0/configure --prefix=/mingw64 --with-local-prefix=/mingw64/local --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-native-system-header-dir=/mingw64/x86_64-w64-mingw32/include --libexecdir=/mingw64/lib --enable-bootstrap --enable-checking=release --with-arch=x86-64 --with-tune=generic --enable-languages=c,lto,c++,fortran,ada,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-lto --enable-libgomp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/mingw64 --with-mpfr=/mingw64 --with-mpc=/mingw64 --with-isl=/mingw64 --with-pkgversion='Rev1, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --with-boot-ldflags='-pipe -Wl,--dynamicbase,--high-entropy-va,--nxcompat,--default-image-base-high -Wl,--disable-dynamicbase -static-libstdc++ -static-libgcc' 'LDFLAGS_FOR_TARGET=-pipe -Wl,--dynamicbase,--high-entropy-va,--nxcompat,--default-image-base-high' --enable-linker-plugin-flags='LDFLAGS=-static-libstdc++\ -static-libgcc\ -pipe\ -Wl,--dynamicbase,--high-entropy-va,--nxcompat,--default-image-base-high\ -Wl,--stack,12582912'
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.2.0 (Rev1, Built by MSYS2 project) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4d077.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_4d077.dir/'
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/cc1.exe -quiet -v -iprefix c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT Files/CMake/share/cmake-3.22/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_4d077.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\Users\joses\AppData\Local\Temp\ccoSGfqh.s
+GNU C17 (Rev1, Built by MSYS2 project) version 11.2.0 (x86_64-w64-mingw32)
+	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "c:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include"
+ignoring nonexistent directory "D:/a/_temp/msys64/mingw64/include"
+ignoring nonexistent directory "/mingw64/include"
+ignoring duplicate directory "c:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"
+ignoring duplicate directory "c:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"
+ignoring nonexistent directory "D:/a/_temp/msys64/mingw64/x86_64-w64-mingw32/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed
+ c:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include
+End of search list.
+cc1.exe: fatal error: Files/CMake/share/cmake-3.22/Modules/CMakeCCompilerABI.c: No such file or directory
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_4d077.dir/build.make:78: CMakeFiles/cmTC_4d077.dir/CMakeCCompilerABI.c.obj] Error 1
+make[1]: Leaving directory 'C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_4d077/fast] Error 2
+
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/ProgramData/chocolatey/bin/make.exe -f Makefile cmTC_072b6/fast && C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe  -f CMakeFiles/cmTC_072b6.dir/build.make CMakeFiles/cmTC_072b6.dir/build
+make[1]: Entering directory 'C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_072b6.dir/testCCompiler.c.obj
+C:/msys64/mingw64/bin/x86_64-w64-mingw32-gcc.exe    -o CMakeFiles/cmTC_072b6.dir/testCCompiler.c.obj -c "C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp/testCCompiler.c"
+cc1.exe: fatal error: Estocastica/Proyecto/build/CMakeFiles/CMakeTmp/testCCompiler.c: No such file or directory
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_072b6.dir/build.make:78: CMakeFiles/cmTC_072b6.dir/testCCompiler.c.obj] Error 1
+make[1]: Leaving directory 'C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:127: cmTC_072b6/fast] Error 2
+
+
+
