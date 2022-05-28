@@ -5,6 +5,7 @@
 #include "Instancia.hpp"
 #include "SolucionDP.hpp"
 #include "Iterativa.hpp"
+#include "Genetico.hpp"
 
 using namespace std;
 using namespace chrono;
@@ -33,6 +34,17 @@ int main(int argc, char *argv[]) {
         SolucionDP solucion(instancia);
     } else if (metodo == "Iterativa") {
         Iterativa solucion(instancia);
+
+        std::ofstream output(ficheroSalida.c_str());
+        output << solucion.max_val << '\n';
+        while (!solucion.fitness_vals.empty()) {
+            output << solucion.fitness_vals.front() << " " 
+                   << solucion.penalty_vals.front() << '\n';
+            solucion.fitness_vals.pop();
+            solucion.penalty_vals.pop();
+        }
+    } else if (metodo == "Genetico") {
+        Genetico solucion(instancia);
 
         std::ofstream output(ficheroSalida.c_str());
         output << solucion.max_val << '\n';
