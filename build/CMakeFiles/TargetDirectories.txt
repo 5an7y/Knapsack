@@ -1,8 +1,0 @@
-C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/Knapsack.dir
-C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/edit_cache.dir
-C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/CMakeFiles/rebuild_cache.dir
-C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/libs/CMakeFiles/Instancia.dir
-C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/libs/CMakeFiles/SolucionDP.dir
-C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/libs/CMakeFiles/Iterativa.dir
-C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/libs/CMakeFiles/edit_cache.dir
-C:/Users/joses/OneDrive/Escuela/Tarea/Sexto/Optimizacion Estocastica/Proyecto/build/libs/CMakeFiles/rebuild_cache.dir

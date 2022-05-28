@@ -1,2 +1,0 @@
-C:\msys64\mingw64\bin\ar.exe qc libIterativa.a CMakeFiles/Iterativa.dir/Iterativa/Iterativa.cpp.obj
-C:\msys64\mingw64\bin\ranlib.exe libIterativa.a

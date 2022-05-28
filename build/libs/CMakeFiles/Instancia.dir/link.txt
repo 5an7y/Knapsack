@@ -1,2 +1,0 @@
-C:\msys64\mingw64\bin\ar.exe qc libInstancia.a CMakeFiles/Instancia.dir/Instancia/Instancia.cpp.obj
-C:\msys64\mingw64\bin\ranlib.exe libInstancia.a

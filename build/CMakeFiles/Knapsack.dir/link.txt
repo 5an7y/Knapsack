@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\Knapsack.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\Knapsack.dir/objects.a @CMakeFiles\Knapsack.dir\objects1.rsp
-C:\msys64\mingw64\bin\g++.exe -Wl,--whole-archive CMakeFiles\Knapsack.dir/objects.a -Wl,--no-whole-archive -o Knapsack.exe -Wl,--out-implib,libKnapsack.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Knapsack.dir\linklibs.rsp
