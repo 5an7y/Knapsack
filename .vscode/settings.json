@@ -1,6 +1,5 @@
 {
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "cmake.configureOnOpen": true,
     "files.associations": {
         "chrono": "cpp",
         "*.tcc": "cpp",
@@ -36,5 +35,9 @@
         "type_traits": "cpp",
         "typeinfo": "cpp",
         "utility": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": true,
+    "cmake.buildArgs": [
+        "-G \"MinGW Makefiles\""
+    ],
 }

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Instancia.hpp"
 
 #include <queue>
