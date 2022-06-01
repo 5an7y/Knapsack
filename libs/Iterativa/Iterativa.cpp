@@ -82,7 +82,7 @@ Iterativa::Iterativa(
     auto duracion = duration_cast<minutes>(act - inicio).count();
 
     int iteracion = 1;
-    while (duracion < 60) {
+    while (duracion < instancia.duracion_min) {
         busqueda_local(instancia, solucion, iteracion);
         
         FitnessInfo fitness_n(instancia, solucion, iteracion);

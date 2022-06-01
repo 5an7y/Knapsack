@@ -32,7 +32,14 @@ class Genetico {
         void seleccion_torneo();
         void cruza_uniforme();
         void mutacion(const int generacion);
+        void aplicar_busqueda_local(const int generacion);
         void elitismo(const int generacion);
+        
+        FitnessInfo _busqueda_local(
+            const Instancia& instancia,
+            std::vector<bool>& solucion,
+            const int iteracion
+        );
 
         void busqueda_local();
         FitnessInfo calcular_maximo_poblacion();
