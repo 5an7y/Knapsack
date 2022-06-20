@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <chrono>
+#include <stdexcept>
 
 using namespace std::chrono;
 
@@ -11,164 +12,159 @@ Genetico::Genetico(
     const int tam_pob,
     const double p_cruce,
     const double p_mutacion,
+    const Penalty penalty_torneo,
+    const Penalty penalty_busqueda_local,
     const int max_queue
-): tam_pob(tam_pob), p_cruce(p_cruce), p_mutacion(p_mutacion), instancia(&instancia) {
+): tam_pob(tam_pob), p_cruce(p_cruce), p_mutacion(p_mutacion), instancia(&instancia),
+    penalty_torneo(penalty_torneo), penalty_busqueda_local(penalty_busqueda_local)  {
+    
     auto inicio = steady_clock::now();
     
     generar_poblacion_inicial();
+    calcular_mejor_poblacion();
 
     auto act = steady_clock::now();
     auto duracion = duration_cast<minutes>(act - inicio).count();
-    int generacion = 1;
+    generacion = 1;
+    maximo_generacion = calcular_penalty_fijo(this -> instancia -> objetos) + 20;
 
     while (duracion < instancia.duracion_min) {
         seleccion_torneo();
         cruza_uniforme();
-        mutacion(generacion);
-        if (busqueda_local) {
-            aplicar_busqueda_local(generacion);
-        }
-        elitismo(generacion);
-
-        std::swap(f_pob, f_sig_pob);
-        std::swap(poblacion, sig_poblacion);
+        mutacion();
+        if (busqueda_local)
+            aplicar_busqueda_local();
+        elitismo();
         
-        auto fitness_n = calcular_maximo_poblacion();
-        auto penalizado = fitness_n;
-        
-        fitness_n.recalcular_fitness(*(this -> instancia), -1); // Calcular el fitness real
         if (fitness_vals.size() != max_queue) {
-            fitness_vals.push(fitness_n.fitness);
-            penalty_vals.push(penalizado.fitness);
+            FitnessInfo f_mejor_penalty = f_mejor;
+            f_mejor_penalty.recalcular_fitness(*(this -> instancia), penalty_torneo); 
+            fitness_vals.push(f_mejor.fitness);
+            penalty_vals.push(f_mejor_penalty.fitness);
         }
-        
-        max_val = std::max(max_val, fitness_n.fitness);
-        
+
         generacion += 1;
-        if (generacion == 5000)
-            generacion = 1;
+        if (generacion > maximo_generacion)
+            generacion = 0;
         
         act = steady_clock::now();
         duracion = duration_cast<minutes>(act - inicio).count();
     }
+    this -> max_val = f_mejor.fitness;
 }
 
 void Genetico::generar_poblacion_inicial() {
     const int N = instancia -> N;
     poblacion.resize(tam_pob);
-    sig_poblacion.resize(tam_pob);
+    aux_poblacion.resize(tam_pob);
     f_pob.resize(tam_pob);
-    f_sig_pob.resize(tam_pob);
 
     for (int i = 0; i < tam_pob; i++) {
         poblacion[i].resize(N);
-        sig_poblacion[i].resize(N);
+        aux_poblacion[i].resize(N);
         for (int j = 0; j < N; j++)
             poblacion[i][j] = rand() % 2;
-        
-        f_pob[i] = FitnessInfo(*instancia, poblacion[i], 1);
     }
+}
+
+void Genetico::calcular_fitness_poblacion(const Penalty tipo_penalty) {
+    int64_t penalty;
+    switch (tipo_penalty) {
+        case Penalty::Fijo :
+            penalty = maximo_generacion - 20;
+            break;
+        case Penalty::Lineal :
+            penalty = generacion;
+            break;
+        default:
+            penalty = -1;
+    }
+
+    for (int i = 0; i < tam_pob; i++)
+        f_pob[i] = FitnessInfo(*instancia, poblacion[i], tipo_penalty, penalty);
 }
 
 void Genetico::seleccion_torneo() {
+    calcular_fitness_poblacion(penalty_torneo);
     for (int i = 0; i < tam_pob; i++) {
         int i1 = rand() % tam_pob,
             i2 = rand() % tam_pob;
+        
         if (f_pob[i1].fitness < f_pob[i2].fitness)
-            sig_poblacion[i] = poblacion[i2];
+            aux_poblacion[i] = poblacion[i2];
         else 
-            sig_poblacion[i] = poblacion[i1];
+            aux_poblacion[i] = poblacion[i1];
     }
+    std::swap(aux_poblacion, poblacion);
 }
 
 void Genetico::cruza_uniforme() {
-    std::vector<std::vector<bool>> vec;
     const int N = instancia -> N;
-    vec.resize(tam_pob);
 
     for (int i = 0; i < tam_pob / 2; i++) {
-        vec[i * 2].resize(N);
-        vec[i * 2 + 1].resize(N);
         int i1 = rand() % tam_pob,
             i2 = rand() % tam_pob;
         bool cruce = ((double)rand() / RAND_MAX <= p_cruce);
         
         for (int j = 0; j < N; j++) {
             if (rand() % 2 && cruce) {
-                vec[i * 2][j] = sig_poblacion[i1][j];
-                vec[i * 2 + 1][j] = sig_poblacion[i2][j];
+                aux_poblacion[i * 2][j] = poblacion[i1][j];
+                aux_poblacion[i * 2 + 1][j] = poblacion[i2][j];
             } else {
-                vec[i * 2][j] = sig_poblacion[i2][j];
-                vec[i * 2 + 1][j] = sig_poblacion[i1][j];
+                aux_poblacion[i * 2][j] = poblacion[i2][j];
+                aux_poblacion[i * 2 + 1][j] = poblacion[i1][j];
             }
         }
     }
 
-    std::swap(vec, sig_poblacion);
+    std::swap(aux_poblacion, poblacion);
 }
 
-void Genetico::mutacion(const int iteracion) {
+void Genetico::mutacion() {
     const int N = instancia -> N;
     for (int i = 0; i < tam_pob; i++) {
         for (int j = 0; j < N; j++) {
             double r = (double)rand() / RAND_MAX;
             if (r <= p_mutacion)
-                sig_poblacion[i][j] = sig_poblacion[i][j] ^ 1;
+                poblacion[i][j] = poblacion[i][j] ^ 1;
         }
-        f_sig_pob[i] = FitnessInfo(*instancia, sig_poblacion[i], iteracion);
     }
 }
 
-void Genetico::aplicar_busqueda_local(const int iteracion) {
-    for (int i = 0; i < tam_pob; i++) 
-        f_sig_pob[i] = _busqueda_local(*(this -> instancia), sig_poblacion[i], iteracion);
-    
-    return;
+void Genetico::aplicar_busqueda_local() {
+    calcular_fitness_poblacion(penalty_busqueda_local);
+    for (int i = 0; i < tam_pob; i++)
+        _busqueda_local(*(this -> instancia), poblacion[i], f_pob[i]);
 }
 
-void Genetico::elitismo(const int iteracion) {
-    int max_fitness_pob = 0;
-    int max_fitness_sig_pob = 0,
-        min_fitness_sig_pob = 0;
-
-    for (int i = 1; i < tam_pob; i++) {
-        if (f_pob[max_fitness_pob].fitness < f_pob[i].fitness)
-            max_fitness_pob = i;
-        if (f_sig_pob[max_fitness_sig_pob].fitness < f_sig_pob[i].fitness)
-            max_fitness_sig_pob = i;
-        if (f_sig_pob[min_fitness_sig_pob].fitness > f_sig_pob[i].fitness)
-            min_fitness_sig_pob = i;
-    }
-
-    if (f_pob[max_fitness_pob].fitness > f_sig_pob[max_fitness_sig_pob].fitness) {
-        std::swap(sig_poblacion[min_fitness_sig_pob], poblacion[max_fitness_pob]);
-        f_sig_pob[min_fitness_sig_pob] = FitnessInfo(*instancia, sig_poblacion[min_fitness_sig_pob], iteracion);
-    }
-}
-
-FitnessInfo Genetico::calcular_maximo_poblacion() {
-    auto ans = f_pob[0];
-    for (int i = 1; i < tam_pob; i++)
-        if (ans.fitness < f_pob[i].fitness)
-            ans = f_pob[i];
-    
-    return ans;
-}
-
-FitnessInfo Genetico::_busqueda_local(
+void Genetico::_busqueda_local(
     const Instancia& instancia,
     std::vector<bool>& solucion,
-    const int iteracion
+    FitnessInfo& fitness_act
 ) {
     int mejor_cambio = 0;
-    FitnessInfo fitness_act(instancia, solucion, iteracion);
     FitnessInfo fitness_aux, 
                 mejor_fitness = fitness_act;
+    
+    int64_t penalty;
+    switch (penalty_busqueda_local) {
+        case Penalty::Fijo :
+            penalty = maximo_generacion - 20;
+            break;
+        case Penalty::Lineal :
+            penalty = generacion;
+            break;
+
+        default:
+            penalty = -1;
+            break;
+    }
 
     while (mejor_cambio >= 0) {
         mejor_cambio = -1;
 
         for (int i = 0; i < instancia.N; i++) {
+            // Calculamos el cambio en el peso y valor si cambiamos el objeto i
             if (solucion[i]) {
                 fitness_aux.peso_total = fitness_act.peso_total - instancia.objetos[i].peso;
                 fitness_aux.valor_total = fitness_act.valor_total - instancia.objetos[i].valor;
@@ -177,7 +173,7 @@ FitnessInfo Genetico::_busqueda_local(
                 fitness_aux.valor_total = fitness_act.valor_total + instancia.objetos[i].valor;
             }
 
-            fitness_aux.recalcular_fitness(instancia, iteracion);
+            fitness_aux.recalcular_fitness(instancia, penalty_busqueda_local, penalty);
             if (fitness_aux.fitness > mejor_fitness.fitness) {
                 mejor_cambio = i;
                 mejor_fitness = fitness_aux;
@@ -190,5 +186,38 @@ FitnessInfo Genetico::_busqueda_local(
         }
     }
 
-    return fitness_act;
+    return;
+}
+
+void Genetico::elitismo() {
+    calcular_fitness_poblacion(Penalty::PesoInvertido);
+    
+    int mejor_idx = -1, peor_idx = 0;
+
+    for (int i = 0; i < tam_pob; i++) {
+        if (f_mejor.fitness < f_pob[i].fitness)
+            mejor_idx = i;
+        if (f_pob[peor_idx].fitness > f_pob[i].fitness)
+            peor_idx = i;
+    }
+
+    if (mejor_idx >= 0) {
+        mejor_elemento = poblacion[mejor_idx];
+        f_mejor = f_pob[mejor_idx];
+    } else {
+        poblacion[peor_idx] = mejor_elemento;
+        f_pob[peor_idx] = f_mejor;
+    }
+}
+
+void Genetico::calcular_mejor_poblacion() {
+    calcular_fitness_poblacion(Penalty::PesoInvertido);
+    
+    int mejor_idx = 0;
+    for (int i = 1; i < tam_pob; i++)
+        if (f_pob[mejor_idx].fitness < f_pob[i].fitness)
+            mejor_idx = i;
+    
+    mejor_elemento = poblacion[mejor_idx];
+    f_mejor = f_pob[mejor_idx];
 }

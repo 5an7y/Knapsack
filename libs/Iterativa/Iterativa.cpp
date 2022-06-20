@@ -3,8 +3,6 @@
 #include <iostream>
 #include <chrono>
 
-#include "Utilidades.hpp"
-
 using namespace std::chrono;
 
 std::vector<bool> generar_solucion(Instancia& instancia) {
@@ -19,10 +17,11 @@ std::vector<bool> generar_solucion(Instancia& instancia) {
 void busqueda_local(
     const Instancia& instancia,
     std::vector<bool>& solucion,
+    const Penalty tipo_penalty,
     const int iteracion
 ) {
     int mejor_cambio = 0;
-    FitnessInfo fitness_act(instancia, solucion, iteracion);
+    FitnessInfo fitness_act(instancia, solucion, tipo_penalty, iteracion);
     FitnessInfo fitness_aux, 
                 mejor_fitness = fitness_act;
 
@@ -38,7 +37,7 @@ void busqueda_local(
                 fitness_aux.valor_total = fitness_act.valor_total + instancia.objetos[i].valor;
             }
 
-            fitness_aux.recalcular_fitness(instancia, iteracion);
+            fitness_aux.recalcular_fitness(instancia, tipo_penalty, iteracion);
             if (fitness_aux.fitness > mejor_fitness.fitness) {
                 mejor_cambio = i;
                 mejor_fitness = fitness_aux;
@@ -69,31 +68,30 @@ void perturbar_solucion(
 
 Iterativa::Iterativa(
     Instancia& instancia,
+    const Penalty tipo_penalty,
     const double mutacion_p,
     const int max_queue
 ) {
     auto inicio = steady_clock::now();
     
     solucion = generar_solucion(instancia);
-    int64_t f = FitnessInfo(instancia, solucion).fitness;
-    max_val = f;
+    max_val = FitnessInfo(instancia, solucion, Penalty::Ninguno).fitness;
 
     auto act = steady_clock::now();
     auto duracion = duration_cast<minutes>(act - inicio).count();
 
     int iteracion = 1;
     while (duracion < instancia.duracion_min) {
-        busqueda_local(instancia, solucion, iteracion);
+        busqueda_local(instancia, solucion, tipo_penalty, iteracion);
         
-        FitnessInfo fitness_n(instancia, solucion, iteracion);
-        FitnessInfo penalizado = fitness_n;
-        fitness_n.recalcular_fitness(instancia, -1); // Calcular el fitness real
+        FitnessInfo fitness_real(instancia, solucion, Penalty::Ninguno);
         if (fitness_vals.size() != max_queue) {
-            fitness_vals.push(fitness_n.fitness);
-            penalty_vals.push(penalizado.fitness);
+            FitnessInfo fitness_penalizado(instancia, solucion, tipo_penalty, iteracion);
+            fitness_vals.push(fitness_real.fitness);
+            penalty_vals.push(fitness_penalizado.fitness);
         }
 
-        max_val = std::max(max_val, fitness_n.fitness);
+        max_val = std::max(max_val, fitness_real.fitness);
         
         perturbar_solucion(instancia, solucion, mutacion_p);
         

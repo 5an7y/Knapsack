@@ -13,6 +13,8 @@ class Genetico {
             const int tam_pob = 1000,
             const double p_cruce = 0.9,
             const double p_mutacion = 0.1,
+            const Penalty penalty_torneo = Penalty::Fijo,
+            const Penalty penalty_busqueda_local = Penalty::Fijo,
             const int max_queue = 10000
         );
         
@@ -20,27 +22,33 @@ class Genetico {
         std::queue<int64_t> fitness_vals, penalty_vals;
 
     private:
+        Penalty penalty_torneo, penalty_busqueda_local;
+        
         int tam_pob;
+        int64_t generacion, maximo_generacion;
         double p_mutacion, p_cruce;
         Instancia* instancia;
         std::vector<std::vector<bool>> poblacion,
-                                       sig_poblacion;
-        std::vector<FitnessInfo> f_pob, f_sig_pob;
+                                       aux_poblacion;
+        std::vector<FitnessInfo> f_pob;
 
         void generar_poblacion_inicial();
+        void calcular_fitness_poblacion(const Penalty tipo_penalty);
 
         void seleccion_torneo();
         void cruza_uniforme();
-        void mutacion(const int generacion);
-        void aplicar_busqueda_local(const int generacion);
-        void elitismo(const int generacion);
-        
-        FitnessInfo _busqueda_local(
+        void mutacion();
+        void aplicar_busqueda_local();
+        void elitismo();
+
+        void _busqueda_local(
             const Instancia& instancia,
             std::vector<bool>& solucion,
-            const int iteracion
+            FitnessInfo& fitness_act
         );
+        
+        void calcular_mejor_poblacion();
 
-        void busqueda_local();
-        FitnessInfo calcular_maximo_poblacion();
+        std::vector<bool> mejor_elemento;
+        FitnessInfo f_mejor;
 };
